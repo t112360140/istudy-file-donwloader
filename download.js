@@ -22,7 +22,10 @@
     }
     const download=async function(){
         try{
-            let cid=window.document.getElementById('selcourse').value;
+            const req=await fetch('mooc_sysbar.php')
+            let el=document.createElement( 'html' );
+            el.innerHTML=await req.text();
+            let cid=el.getElementsByTagName('select')[0].value;
             if(cid==='10000000'){
                 cid=prompt('請輸入您想下載的課程代碼:');
             }
